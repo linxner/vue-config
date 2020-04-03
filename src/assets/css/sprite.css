@@ -1,0 +1,4 @@
+.sprite { background-image: url(~sprite.png);background-size: 666px 460px;}
+.sprite-logo { width: 200px; height: 200px; background-position: -466px 0px; }
+.sprite-monster { width: 446px; height: 460px; background-position: 0px 0px; }
+.sprite-rain { width: 61px; height: 102px; background-position: -466px -220px; }
