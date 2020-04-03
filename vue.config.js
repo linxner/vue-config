@@ -39,7 +39,7 @@ module.exports = {
           现在是一个个的散兵，把他们位置找到，合成一个
           */
           src: {
-            cwd: path.resolve(__dirname, './src/assets'),
+            cwd: path.resolve(__dirname, './src/assets/img'),
             glob: '*.png'
           },
           // 输出雪碧图文件及样式文件，这个是打包后，自动生成的雪碧图和样式，自己配置想生成去哪里就去哪里
