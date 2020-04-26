@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <Home msg="Welcome to Your Vue.js App" />
+    <Screen/>
   </div>
 </template>
 
-<script lang="ts" >
+<script>
 import Home from "./components/Home.vue";
-
+import Screen from './components/screen';
 export default {
   name: "App",
   components: {
-    Home
+    Home,
+    Screen
   }
 };
 </script>

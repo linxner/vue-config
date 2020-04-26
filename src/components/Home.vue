@@ -1,5 +1,7 @@
 <template>
-  <div class="bg"></div>
+  <div class="bg">
+
+  </div>
 </template>
 
 <script lang='ts'>
@@ -16,7 +18,7 @@ export default {
 .bg {
   width: 100%;
   height: 100%;
-  background-image: url("../../public/images/bg.png");
+  // background-image: url("../../public/images/bg.png");
   background-position: 0 -80px;
 }
 </style>
