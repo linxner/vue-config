@@ -19,6 +19,7 @@ export default {
   width: 100%;
   height: 100%;
   // background-image: url("../../public/images/bg.png");
-  background-position: 0 -80px;
+  // background-position: 0 -80px;
+  background-color: #856194;
 }
 </style>
