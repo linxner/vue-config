@@ -9,7 +9,10 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// import wx from 'weixin-js-sdk'
+/**
+ * 微信分享方法
+ * 
+ */
 var wx = window.wx;
 
 function wechatShare() {
@@ -25,13 +28,10 @@ function wechatShare() {
       jsApiList: ['openWXSearchPage', 'onMenuShareAppMessage', 'onMenuShareTimeline', 'hideOptionMenu']
     });
     wx.error(function (res) {
-      // alert(JSON.stringify(res));
       console.log(res);
     });
   });
 
-  var winUrl = window.location.href;
-  var baseUrl = winUrl.split('?')[0];
   var data = {
     title: "收下你的2020年健康关键词",
     desc: "2020年，你健康自由了吗？",

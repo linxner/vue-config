@@ -1,3 +1,10 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
 //返回程序运行环境
 function Env() {
   var UserAgent = navigator.userAgent.toLowerCase();
@@ -18,4 +25,5 @@ function Env() {
   };
 }
 
-export default Env;
+var _default = Env;
+exports["default"] = _default;

@@ -1,5 +1,8 @@
+/**
+ * 微信分享方法
+ * 
+ */
 import axios from 'axios'
-// import wx from 'weixin-js-sdk'
 var wx = window.wx
 
 function wechatShare() {
@@ -16,12 +19,9 @@ function wechatShare() {
 
     });
     wx.error(function (res) {
-      // alert(JSON.stringify(res));
       console.log(res)
     });
   });
-  var winUrl = window.location.href
-  var baseUrl = winUrl.split('?')[0]
   var data = {
     title: "收下你的2020年健康关键词",
     desc: "2020年，你健康自由了吗？",

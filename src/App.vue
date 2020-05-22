@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <Loading />
+    <router-view></router-view>
     <Screen />
   </div>
 </template>
 
 <script>
-import Loading from "./components/Loading.vue";
 import Screen from "./components/screen";
 export default {
   name: "App",
   components: {
-    Screen,
-    Loading
+    Screen
   }
 };
 </script>
@@ -48,5 +46,12 @@ html {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

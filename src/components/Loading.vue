@@ -1,102 +1,114 @@
 <template>
-  <div class="content">
-    <Home :homeShow="homeShow" />
-    <transition name="easeInOut">
-      <div class="loading" v-show="loadingShow">
+  <transition name="fade">
+    <div class="loading" v-show="loadingShow">
+      <div class="car_trans" :style="{transform:'translate3d('+ percent * 6.64 +'px,0, 0)'}">
         <div class="loading_car updown-center"></div>
       </div>
-    </transition>
-  </div>
+      <div class="loading_progress_bg center">
+        <div class="loading_progress" :style="{'transform':'translate3d('+(percent-100)+'%,0,0)'}"></div>
+      </div>
+      <div class="progress_txt center">
+        <span>{{percent+'%'}}</span>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>
 import axios from "axios";
-// import { Howl, Howler } from "howler";
-import Home from "./Home.vue";
+import AsyncPreloader from "async-preloader";
 
 export default {
   data() {
     return {
       percent: 0,
-      loadingShow: true,
-      homeShow: false
+      loadingShow: true
     };
   },
+
   mounted() {
-    this.init();
+    this.loadingInit();
   },
   methods: {
-    init() {
-      var imgArray = [];
-      var _this = this;
+    loadingInit() {
       axios.get("assete-manifest.json").then(res => {
-        // console.log(res);
-        let t = res.data;
-        for (var i in t) {
-          var path = t[i];
-          imgArray.push({
+        let items = res.data;
+        let assets = [];
+        for (let i in items) {
+          assets.push({
             id: i,
-            src: path
+            src: items[i]
           });
         }
-        var queue = new createjs.LoadQueue();
-        queue.maintainScriptOrder = true;
-        // console.log(imgArray);
-        let a = imgArray.splice(6);
-        // console.log(a);
-        queue.installPlugin(createjs.Sound);
-        queue.on("progress", handleFileProgress);
-        queue.on("complete", handleComplete, this);
-        queue.loadManifest(a);
+        let loadedCount = 0;
+
+        assets.map(async item => {
+          const data = await AsyncPreloader.loadItem(item);
+          loadedCount++;
+          this.percent = (100 * loadedCount) / assets.length;
+          console.log(`Progress: ${(100 * loadedCount) / assets.length}%`);
+          if (this.percent >= 100) {
+            this.startHome();
+          }
+        });
       });
-
-      function handleFileProgress(e) {
-        // _this.percent = Math.ceil(e.progress * 100) || 0;
-        _this.loadingwidth = 60 + e.progress * 290;
-        console.log(e.progress);
-      }
-
-      function handleComplete() {
-        _this.clickTipsShow = true;
-        console.log("completed");
-      }
+      // return true;
     },
     startHome() {
-      this.loadingShow = false;
-      this.homeShow = true;
-      let UserAgent = navigator.userAgent.toLowerCase();
-
-      if (/android/.test(UserAgent)) {
-      } else {
-      }
+      setTimeout(() => {
+        this.$router.push("/home");
+      }, 1000);
     }
-  },
-  components: {
-    Home
   }
 };
 </script>
 
 <style lang='less'>
-.content {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: #856194;
-}
 .loading {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
+  background-color: #856194;
   left: 0;
-  .loading_car {
-    width: 1276px;
-    height: 742px;
-    left: -674px;
-    background: url("../assets/images/loading_car.png") no-repeat;
+  .car_trans {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease;
+    .loading_car {
+      width: 1276px;
+      height: 742px;
+      left: -874px;
+      background: url("../assets/images/loading_car.png") no-repeat;
+    }
+  }
+
+  .loading_progress_bg {
+    width: 408px;
+    height: 12px;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    bottom: 50px;
+    margin-top: 420px;
+    overflow: hidden;
+    .loading_progress {
+      width: 408px;
+      height: 12px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      border-radius: 7px;
+      background-color: #fff;
+    }
+  }
+  .progress_txt {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 460px;
   }
 }
 </style>
