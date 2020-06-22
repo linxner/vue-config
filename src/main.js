@@ -1,16 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import 'normalize.css'
-import './assets/css/sprite.css'
 import FastClick from 'fastclick'
-import VueRouter from 'vue-router'
-import routes from './route'
-
-const router = new VueRouter({
-  routes,
-  // mode: 'history'
-})
-Vue.use(VueRouter)
 
 Vue.config.productionTip = false
 

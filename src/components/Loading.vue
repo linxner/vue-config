@@ -48,17 +48,12 @@ export default {
           this.percent = (100 * loadedCount) / assets.length;
           console.log(`Progress: ${(100 * loadedCount) / assets.length}%`);
           if (this.percent >= 100) {
-            this.startHome();
+            // do something...
           }
         });
       });
       // return true;
     },
-    startHome() {
-      setTimeout(() => {
-        this.$router.push("/home");
-      }, 1000);
-    }
   }
 };
 </script>
