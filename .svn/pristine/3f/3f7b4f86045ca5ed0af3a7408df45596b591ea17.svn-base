@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <!-- <title><%= htmlWebpackPlugin.options.title %></title> -->
+  <title>五年之吕，参入人心</title>
+  <!-- <script src="./js/createjs.min.js"></script> -->
+  <script>
+    function t(t, e, n) {
+      var r, i, o = document.querySelector('meta[name="viewport"]'), a = document.documentElement.clientWidth;
+      console.log(a)
+      switch (t) {
+        case "fixed":
+          r = e,
+            i = a / e;
+          break;
+        case "rem":
+          var s = window.devicePixelRatio || 1;
+          r = a * s,
+            i = 1 / s,
+            document.documentElement.style.fontSize = 100 * (a * s / e) + "px"
+      }
+      o.setAttribute("content", "width=" + r + ",initial-scale=" + i + ",maximum-scale=" + i + ",minimum-scale=" + i),
+        n && window.addEventListener("DOMContentLoaded", function () {
+          document.body.style.fontSize = 50 / i + "px"
+        })
+    }
+
+    t("fixed", 750)
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

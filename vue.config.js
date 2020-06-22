@@ -1,7 +1,5 @@
 const DefinePlugin = require('webpack').DefinePlugin
 const ManifestPlugin = require('webpack-manifest-plugin')
-const path = require('path')
-const SpritesmithPlugin = require('webpack-spritesmith')
 
 // var templateFunction = function (data) {
 //   console.log(data);
