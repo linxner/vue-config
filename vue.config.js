@@ -29,7 +29,13 @@ module.exports = {
       // 定义一个插件数组。用来覆盖，在里面使用我们的主角
       plugins: [
         new ManifestPlugin({
-          fileName: './assete-manifest.json'
+          fileName: './assete-manifest.json',
+          filter: function (path) {
+            if (/img/.test(path.name)) {
+              return true
+            }
+
+          }
         }),
         // new SpritesmithPlugin({
         //   /*

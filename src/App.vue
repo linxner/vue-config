@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <Loading/>
+    <Loading />
     <Screen />
   </div>
 </template>
 
 <script>
 import Screen from "./components/screen";
-import Loading from './components/Loading'
+import Loading from "./components/Loading";
 export default {
   name: "App",
   components: {
     Screen,
-    Loading
-  }
+    Loading,
+  },
 };
 </script>
 
@@ -24,6 +24,10 @@ html {
   height: 100%;
   background-color: #fff;
 }
+img {
+  display: block;
+  pointer-events: none;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,6 +36,17 @@ html {
   color: #2c3e50;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.common {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .center {
   position: absolute;
