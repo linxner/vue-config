@@ -1,7 +1,6 @@
 <template>
   <div class="screen">
     <div class="content">
-      <!-- <img src="../../public/images/hengping.png" alt /> -->
       <span style="font-size:30px;color:#fff;">请竖屏体验</span>
     </div>
   </div>
@@ -20,7 +19,8 @@ export default {};
   left: 0;
   //   background-image: url("../../public/images/screen.png");
   //   background-size: cover;
-  background-color: #f00;
+  color: #fff;
+  background-color: #000;
   z-index: 9999;
   display: none;
   .content {

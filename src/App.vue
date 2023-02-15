@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Loading />
+    <Loading @loaded="onLoaded" />
+    <Home :loadDone="loadDone" />
     <Screen />
   </div>
 </template>
@@ -13,6 +14,16 @@ export default {
   components: {
     Screen,
     Loading,
+  },
+  data() {
+    return {
+      loadDone: false,
+    };
+  },
+  methods: {
+    onLoaded() {
+      this.loadDone = true;
+    },
   },
 };
 </script>

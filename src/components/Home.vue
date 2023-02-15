@@ -4,9 +4,14 @@
   </transition>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 export default {
-  name: "Home",
+  props: {
+    loadDone: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 

@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="loading" v-show="loadingShow">
       <div class="progress_txt center">
-        <span>{{percent+'%'}}</span>
+        <span>{{ percent + "%" }}</span>
       </div>
     </div>
   </transition>
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       percent: 0,
-      loadingShow: true
+      loadingShow: true,
     };
   },
 
@@ -25,34 +25,34 @@ export default {
   },
   methods: {
     loadingInit() {
-      axios.get("assete-manifest.json").then(res => {
+      axios.get("assete-manifest.json").then((res) => {
         let items = res.data;
         let assets = [];
         for (let i in items) {
           assets.push({
             id: i,
-            src: items[i]
+            src: items[i],
           });
         }
         let loadedCount = 0;
 
-        assets.map(async item => {
+        assets.map(async (item) => {
           const data = await AsyncPreloader.loadItem(item);
           loadedCount++;
-          this.percent = Math.round( (100 * loadedCount) / assets.length);
+          this.percent = Math.round((100 * loadedCount) / assets.length);
           console.log(`Progress: ${(100 * loadedCount) / assets.length}%`);
           if (this.percent >= 100) {
-            // do something...
+            this.loadingShow = false;
+            this.$emit('loaded')
           }
         });
       });
-      // return true;
     },
-  }
+  },
 };
 </script>
 
-<style lang='less'>
+<style lang="less" scoped>
 .loading {
   width: 100%;
   height: 100%;
